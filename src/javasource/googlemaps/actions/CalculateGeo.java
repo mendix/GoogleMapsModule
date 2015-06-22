@@ -13,6 +13,8 @@ import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.UserAction;
 import googlemaps.actions.GeoCoder.Location;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.security.AccessControlException;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.IContext;
@@ -44,8 +46,8 @@ public class CalculateGeo extends CustomJavaAction<Boolean>
 		
 		loc = GeoCoder.getLocation(addressString);
 				
-		locationObj.setLatitude(loc.lat);
-		locationObj.setLongitude(loc.lon);
+		locationObj.setLatitude(new BigDecimal(loc.lat, MathContext.DECIMAL64));
+		locationObj.setLongitude(new BigDecimal(loc.lon, MathContext.DECIMAL64));
 		
 		return true;
 		// END USER CODE
