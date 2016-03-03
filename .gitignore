@@ -7,3 +7,5 @@ src/.project
 *.launch
 *.tmp
 *.lock
+
+dist/
