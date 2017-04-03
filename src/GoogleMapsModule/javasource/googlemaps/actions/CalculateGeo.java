@@ -20,16 +20,13 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
-/**
- * 
- */
-public class CalculateGeo extends CustomJavaAction<Boolean>
+public class CalculateGeo extends CustomJavaAction<java.lang.Boolean>
 {
 	private IMendixObject __locationObj;
 	private googlemaps.proxies.Location locationObj;
-	private String addressString;
+	private java.lang.String addressString;
 
-	public CalculateGeo(IContext context, IMendixObject locationObj, String addressString)
+	public CalculateGeo(IContext context, IMendixObject locationObj, java.lang.String addressString)
 	{
 		super(context);
 		this.__locationObj = locationObj;
@@ -37,7 +34,7 @@ public class CalculateGeo extends CustomJavaAction<Boolean>
 	}
 
 	@Override
-	public Boolean executeAction() throws Exception
+	public java.lang.Boolean executeAction() throws Exception
 	{
 		this.locationObj = __locationObj == null ? null : googlemaps.proxies.Location.initialize(getContext(), __locationObj);
 
@@ -57,7 +54,7 @@ public class CalculateGeo extends CustomJavaAction<Boolean>
 	 * Returns a string representation of this action
 	 */
 	@Override
-	public String toString()
+	public java.lang.String toString()
 	{
 		return "CalculateGeo";
 	}

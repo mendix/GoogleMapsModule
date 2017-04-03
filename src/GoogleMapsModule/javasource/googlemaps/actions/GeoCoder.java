@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.AccessControlException;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.mendix.thirdparty.org.json.JSONArray;
+import com.mendix.thirdparty.org.json.JSONObject;
+
 
 public class GeoCoder {
 	private final static String ENCODING = "UTF-8";

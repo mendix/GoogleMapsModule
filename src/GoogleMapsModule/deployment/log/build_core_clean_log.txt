@@ -1,0 +1,9 @@
+Buildfile: C:\Mendix\GitHub\Modules\GoogleMapsModule\src\GoogleMapsModule\deployment\build_core.xml
+
+clean:
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+
+

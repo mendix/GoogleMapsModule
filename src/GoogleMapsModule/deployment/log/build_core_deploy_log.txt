@@ -1,0 +1,10 @@
+Buildfile: C:\Mendix\GitHub\Modules\GoogleMapsModule\src\GoogleMapsModule\deployment\build_core.xml
+
+deploy:
+    [unzip] Expanding: C:\Program Files\Mendix\7.0.2\modeler\deployment.mxz into C:\Mendix\GitHub\Modules\GoogleMapsModule\src\GoogleMapsModule\deployment
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+
+
