@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import com.mendix.core.Core;
+import com.mendix.core.conf.Configuration;
 import com.mendix.thirdparty.org.json.JSONArray;
 import com.mendix.thirdparty.org.json.JSONObject;
 
@@ -36,12 +38,25 @@ public class GeoCoder {
 	public static Location getLocation (String address) throws IOException {
 		
 		StringBuilder sb = new StringBuilder();
+		StringBuilder newUrl = new StringBuilder();
+		
+		newUrl.append("https://maps.googleapis.com/maps/api/geocode/json?address=");
+		newUrl.append(URLEncoder.encode (address, ENCODING));
+		newUrl.append("&sensor=false");
+		
+		if(googlemaps.proxies.constants.Constants.getAPI_Key().length() > 0) {
+			newUrl.append("&key=");
+			newUrl.append(googlemaps.proxies.constants.Constants.getAPI_Key());
+		}
+		
 		Location location = null;
 		
+		Core.getLogger("GoogleMapsModule").trace(newUrl);
+
 		
 		BufferedReader in = new BufferedReader (
 			new InputStreamReader (
-				new URL ("https://maps.googleapis.com/maps/api/geocode/json?address="+URLEncoder.encode (address, ENCODING)+"&sensor=false")
+				new URL (newUrl.toString())
 				.openStream ()
 			)
 		);
@@ -60,6 +75,8 @@ public class GeoCoder {
 		JSONArray jsonresults = (json.getJSONArray("results"));
 		
 		String  jsonstatus = (json.getString("status"));
+		
+		String error_message;
 		
 		if(jsonstatus.equals(STATUS_OK))
 		{
@@ -80,25 +97,10 @@ public class GeoCoder {
 			}
 		}
 		else{
-			if(jsonstatus.equals(STATUS_OVER_QUERY_LIMIT)) throw new IOException("GEOCODE request failed: you are over your quota");
-			else if(jsonstatus.equals(STATUS_ZERO_RESULTS)) throw new IOException("The geocode request was successful but returned no results");
-			else if(jsonstatus.equals(STATUS_REQUEST_DENIED)) throw new IOException("The geocode request is denied");
-			else if(jsonstatus.equals(STATUS_INVALID_REQUEST)) throw new IOException("The geocode request is invalid (generally indicates that the query (address or latlng) is missing)");
-			else if(jsonstatus.equals(STATUS_UNKNOWN_ERROR)) throw new IOException("The geocode request was not succesfull due to a google server error. The request may succeed if you try again.");
+			error_message = json.getString("error_message");
+			Core.getLogger("GoogleMapsModule").error(jsonstatus +": " + error_message);
 		}
 		
-		if (location == null) {
-			switch (statusCode) {
-				case 400: throw new IOException ("Bad Request");
-				case 500: throw new IOException ("Unknown error from Google Encoder");
-				case 601: throw new IOException ("Missing query");
-				case 602: throw new IOException ("Address could not be found");
-				case 603: throw new IOException ("Legal problem");
-				case 604: throw new IOException ("No route");
-				case 610: throw new IOException ("Bad key");
-				case 620: throw new IOException ("Too many queries");
-			}
-		}
 		return location;
 		
 	}

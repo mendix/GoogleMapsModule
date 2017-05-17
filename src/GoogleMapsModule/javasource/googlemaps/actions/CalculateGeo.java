@@ -42,11 +42,15 @@ public class CalculateGeo extends CustomJavaAction<java.lang.Boolean>
 		Location loc;
 		
 		loc = GeoCoder.getLocation(addressString);
-				
-		locationObj.setLatitude(new BigDecimal(loc.lat, MathContext.DECIMAL64));
-		locationObj.setLongitude(new BigDecimal(loc.lon, MathContext.DECIMAL64));
-		
-		return true;
+
+		if(loc != null) {
+			locationObj.setLatitude(new BigDecimal(loc.lat, MathContext.DECIMAL64));
+			locationObj.setLongitude(new BigDecimal(loc.lon, MathContext.DECIMAL64));
+			return true;
+		}
+		else {
+			return false;
+		}
 		// END USER CODE
 	}
 

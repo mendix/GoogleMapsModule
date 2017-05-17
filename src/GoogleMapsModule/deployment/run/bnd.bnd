@@ -1,6 +1,0 @@
-Private-Package: system, administration.proxies, administration.proxies.microflows, googlemaps.actions, googlemaps.proxies, googlemaps.proxies.microflows, system, system.actions, system.proxies, system.proxies.microflows
-Import-Package: *;resolution:=optional
-Service-Component: *
-Include-Resource: ../../userlib/;recursive:=true;filter:=!*.jar
-Bundle-Name: GoogleMapsModule
-Bundle-SymbolicName: project

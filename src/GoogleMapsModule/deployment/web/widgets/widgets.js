@@ -1,1 +1,0 @@
-﻿define(["GoogleMaps/widget/GoogleMaps"], {});
