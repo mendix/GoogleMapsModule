@@ -1,7 +1,7 @@
 **/proxies/
-src/javasource/com
-src/javasource/system
-src/deployment/
+src/GoogleMapsModule/javasource/com
+src/GoogleMapsModule/javasource/system
+src/GoogleMapsModule/deployment
 src/.classpath
 src/.project
 *.launch
