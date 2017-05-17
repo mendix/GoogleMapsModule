@@ -11,6 +11,9 @@ Determine latitude and longitude based on an address. With these coordinates it 
 The module contains snippets and example pages which you can use in your project. The example pages are excluded from the project by default in order to reduce the dependency on layouts (which might not be available in your project).
 You can find the Snippets in the '_Use me' folder in the project navigation. You can find the example pages in '_Example pages' folder in the project navigation.
 
+#### Constants
+Optionally you can add an API Key of your Google project. The API key allows you to monitor your application's API usage in the Google API Console.
+
 #### Snippets
 Copy the snippets which you would like to use to a page in your project.
 
