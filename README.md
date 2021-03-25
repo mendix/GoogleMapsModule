@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # GoogleMapsModule
 Module utilizing the Google Maps api to determine coordinates based on an address. For licensing and terms using this Google API, please refer to the [Terms of Service](https://developers.google.com/maps/terms)
 
